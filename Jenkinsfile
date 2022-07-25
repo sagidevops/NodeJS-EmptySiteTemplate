@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('checkout code') {
           steps {
-            cleanWS()
+            cleanWs()
             git(url: 'git@github.com:sagidevops/NodeJS-EmptySiteTemplate.git', branch: 'master', credentialsId: 'Github-creds')
           }
         }
