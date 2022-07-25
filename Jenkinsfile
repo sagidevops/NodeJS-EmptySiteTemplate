@@ -57,7 +57,8 @@ fi'''
 
     stage('Package') {
       steps {
-        sh '''tar -czvf package-$BUILD_ID.tar.gz .
+        sh '''mkdir bin && mv * bin/
+tar -czvf package-$BUILD_ID.tar.gz bin/
 '''
       }
     }
