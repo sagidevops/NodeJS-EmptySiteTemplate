@@ -2,6 +2,7 @@ pipeline {
   agent any
   stages {
     stage('checkout code') {
+      cleanWS()
       parallel {
         stage('checkout code') {
           steps {
