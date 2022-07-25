@@ -35,11 +35,12 @@ pipeline {
 
         stage('check if app is running') {
           steps {
-            sh '''curl localhost:8081
+            sh '''sleep 5
+curl localhost:8081
 if [[ $?(echo $?) == 0 ]];
 then
   echo "success"
-  ps -ef | grep node | awk {"print $2"}
+  ps -ef | grep node | awk \'{print $2}\' | xargs kill
   exit 0
 else
   echo "failure"
