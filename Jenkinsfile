@@ -30,10 +30,11 @@ pipeline {
         stage('Run The App') {
           steps {
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            sh 'node server.js'
+              sh 'node server.js'
             }
+
           }
-        }   
+        }
 
         stage('check if app is running') {
           steps {
@@ -51,6 +52,19 @@ fi'''
           }
         }
 
+      }
+    }
+
+    stage('Package') {
+      steps {
+        sh '''tar -czvf package-$BUILD_ID.tar.gz .
+'''
+      }
+    }
+
+    stage('Archive artifacts') {
+      steps {
+        archiveArtifacts '*.tar.gz'
       }
     }
 
