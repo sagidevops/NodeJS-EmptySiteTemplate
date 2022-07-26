@@ -58,8 +58,7 @@ fi'''
     stage('Package') {
       steps {
         sh '''mkdir target && rsync -Rr . target/
-tar -czvf package-$BUILD_ID.tar.gz target/
-'''
+tar -czvf package-$BUILD_ID.tar.gz target/'''
       }
     }
 
